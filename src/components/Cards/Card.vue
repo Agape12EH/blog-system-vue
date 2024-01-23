@@ -5,8 +5,17 @@
     </div>
     <div class="card-header" v-if="$slots.header || title">
       <slot name="header">
-        <h4 class="card-title">{{ title }}</h4>
-        <p class="card-category" v-if="subTitle">{{ subTitle }}</p>
+        <div>
+          <h4 class="card-title">{{ title }}</h4>
+          <p class="card-category" v-if="subTitle">{{ subTitle }}</p>
+        </div>
+
+        <div v-if="actions">
+          <router-link v-if="actions.create.canSee" :to="actions.create.path">
+            <i v-if="actions.create.canSee" :class="actions.create.icon"></i>
+            {{ actions.create.button }}
+          </router-link>
+        </div>
       </slot>
     </div>
     <div class="card-body" v-if="$slots.default">
@@ -25,6 +34,7 @@ export default {
   props: {
     title: String,
     subTitle: String,
+    actions: Object,
   },
 };
 </script>

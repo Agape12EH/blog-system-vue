@@ -5,11 +5,14 @@ import NotFound from "@/pages/NotFoundPage.vue";
 // Admin pages
 import Dashboard from "@/pages/Dashboard.vue";
 import UserProfile from "@/pages/UserProfile.vue";
+import CreateUser from "@/pages/CreateUser.vue";
 import Notifications from "@/pages/Notifications.vue";
 import Icons from "@/pages/Icons.vue";
 import Maps from "@/pages/Maps.vue";
 import Typography from "@/pages/Typography.vue";
-import TableList from "@/pages/TableList.vue";
+import UserList from "@/pages/User/UserList.vue";
+import PostList from "@/pages/PostList.vue";
+import CommentList from "@/pages/CommentList.vue";
 
 const routes = [
   {
@@ -26,6 +29,11 @@ const routes = [
         path: "stats",
         name: "stats",
         component: UserProfile,
+      },
+      {
+        path: "createuser",
+        name: "createuser",
+        component: CreateUser,
       },
       {
         path: "notifications",
@@ -48,9 +56,19 @@ const routes = [
         component: Typography,
       },
       {
-        path: "table-list",
-        name: "table-list",
-        component: TableList,
+        path: "user-list",
+        name: "user-list",
+        component: UserList,
+      },
+      {
+        path: "post-list",
+        name: "post-list",
+        component: PostList,
+      },
+      {
+        path: "comment-list",
+        name: "comment-list",
+        component: CommentList,
       },
     ],
   },

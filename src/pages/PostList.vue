@@ -14,22 +14,22 @@
 import { PaperTable } from "@/components";
 import axios from 'axios';
 
-const tableColumns = ["Id", "Name", "Lastname", "Email"];
+const tableColumns = ["id", "title", "subtitle", "publicationAt", "userId"];
 
 export default {
   components: {
     PaperTable,
   },
   created() {
-    axios.get('http://localhost:3000/users')
+    axios.get('http://localhost:3000/posts')
       .then(res => this.data = res.data)
       .catch(error => console.error(error))
       .finally(() => console.log('finally'));
   },
   data() {
     return {
-      title: "Stripped Table",
-      subTitle: "Here is a subtitle for this table",
+      title: "Lista de Posts",
+      subTitle: "Se Listan los Post publicados en el Blog",
       columns: [...tableColumns],
       data: null,
     };

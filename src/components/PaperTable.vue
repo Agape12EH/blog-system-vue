@@ -15,20 +15,26 @@
           >
             {{ itemValue(item, column) }}
           </td>
+          <td v-if="actions">
+            <BtnActions :actions="actions" />
+          </td>
         </slot>
       </tr>
     </tbody>
   </table>
 </template>
 <script>
+import BtnActions from './BtnActions.vue';
+
 export default {
   name: "paper-table",
   props: {
     columns: Array,
     data: Array,
+    actions: Object,
     type: {
       type: String, // striped | hover
-      default: "striped",
+      default: "hover",
     },
     title: {
       type: String,
@@ -39,6 +45,9 @@ export default {
       default: "",
     },
   },
+  components: {
+    BtnActions
+  },
   computed: {
     tableClass() {
       return `table-${this.type}`;
@@ -46,11 +55,10 @@ export default {
   },
   methods: {
     hasValue(item, column) {
-      return item[column.toLowerCase()] !== "undefined";
+      return item[column] !== "undefined";
     },
     itemValue(item, column) {
-      console.log(item);
-      return item[column.toLowerCase()];
+      return item[column];
     },
   },
 };
